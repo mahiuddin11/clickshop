@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Catagory;
 use App\Models\Brand;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -51,7 +52,7 @@ class ProductController extends Controller
         $product = new Product();
 
         $product->name = $request->name;
-        $product->slug = Str::slug('slug');
+        $product->slug = Str::slug($request->slug);
         $product->Catagory_id = $request->category_id;
         $product->brand_id = $request->brand_id;
         $product->short_description = $request->short_description;
@@ -61,7 +62,15 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->stock_status = $request->stock_status;
         $product->featured = $request->featured;
-        $product->images = $request->images;
+
+        $current_timestamp = Carbon::now()->timestamp;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = $current_timestamp . '.' . $image->extension();
+            $image->move(public_path('images/products'), $imageName);
+        }
+
         $product->save();
 
 
