@@ -251,6 +251,12 @@ class AdminController extends Controller
     }
 
 
+    public function company_setting(){
+
+        return view('Admin.setting');
+    }
+
+
 
 
 }

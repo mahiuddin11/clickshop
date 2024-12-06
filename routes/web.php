@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AuthAdmin;
 
@@ -47,4 +48,12 @@ Route::middleware(['auth',AuthAdmin::class])->group(function()
     Route::put('/admin/catagorie/update/',[AdminController::class,'catagorie_update'])->name('admin.catagorie.update');
     Route::delete('/admin/catagorie/delete/{id}',[AdminController::class,'catagorie_delete'])->name('admin.catagorie.delete');
 
+
+    // product Route Link
+    Route::get('/admin/product',[ProductController::class,'index'])->name('admin.productlist');
+    Route::get('/admin/product/create',[ProductController::class, 'productCreate'])->name('admin.product.create');
+    Route::post('/admin/product/store',[ProductController::class, 'store'])->name('admin.product.store');
+
+    //setting route link
+    Route::get('/admin/setting',[AdminController::class, 'company_setting'])->name('admin.setting');
 });
