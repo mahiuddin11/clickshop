@@ -61,7 +61,7 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->stock_status = $request->stock_status;
         $product->featured = $request->featured;
-
+        $product->images = $request->images;
         $product->save();
 
 
