@@ -15,21 +15,23 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('short_description')->nullable();
-            $table->string('descaption');
-            $table->string('reguler_price');
-            $table->string('sale_price');
-            $table->string('SKU');
-            $table->enum('stok_status',['instok','outofstok']);
-            $table->boolean('featured')->default(false);
-            $table->unsignedBigInteger('quantity')->default(0);
-            $table->string('image')->nullable();
+            $table->unsignedBigInteger('catagory_id');
+            $table->unsignedBigInteger('brand_id');
+            $table->text('short_description');
+            $table->text('description');
+            $table->decimal('regular_price', 8, 2);
+            $table->decimal('sale_price', 8, 2)->nullable();
+            $table->string('SKU')->unique();
+            $table->integer('quantity');
+            $table->enum('stock_status', ['instock', 'outofstock'])->default('instock');
+            $table->boolean('featured')->default(0);
+            $table->string('image');
             $table->text('images')->nullable();
-            $table->bigInteger('catagory_id')->unsigned()->nullable();
-            $table->bigInteger('brand_id')->unsigned()->nullable();
-            $table->foreign('catagory_id')->references('id')->on('catagories')->onDelete('cascade');
-            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->timestamps();
+
+            // Foreign keys
+            $table->foreign('catagory_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
         });
     }
 

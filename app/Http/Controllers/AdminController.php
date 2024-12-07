@@ -250,7 +250,7 @@ class AdminController extends Controller
         return redirect()->route('admin.catagoris')->with('success','catagorie delete successfull');
     }
 
-
+    // company setting
     public function company_setting(){
 
         return view('Admin.setting');
