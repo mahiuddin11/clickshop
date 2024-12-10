@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -18,6 +21,10 @@ Auth::routes();
 
 Route::get('/', [HomeController::class,'index'])->name('home.index');
 Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
+
+Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+Route::get('/about',[AboutController::class,'index'])->name('about.index');
+Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
 
 
 Route::middleware(['auth'])->group(function()
