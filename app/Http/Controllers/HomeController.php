@@ -24,6 +24,11 @@ class HomeController extends Controller
     public function index()
     {
         return view("index");
-        
+
+    }
+
+    public function shop(){
+        // dd('sdf');
+        return view('shop');
     }
 }

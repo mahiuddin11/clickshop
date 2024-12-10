@@ -38,7 +38,7 @@ class ProductController extends Controller
 
         $product->name = $request->name;
         $product->slug = $request->slug;
-        $product->catagory_id = $request->catagory_id;
+        $product->category_id = $request->category_id;
         $product->brand_id = $request->brand_id;
         $product->short_description = $request->short_description;
         $product->description = $request->description;

@@ -20,37 +20,38 @@ class CatagoriesSeeder extends Seeder
                 'name' => 'Electronics',
                 'slug' => Str::slug('Electronics'),
                 'image' => null,
-                'parent_id' => null,
+                'parent_id' => 1,
             ],
             [
                 'name' => 'Mobiles',
                 'slug' => Str::slug('Mobiles'),
                 'image' => null,
-                'parent_id' => 1, // Parent category ID for Electronics
+                'parent_id' => 2, // Parent category ID for Electronics
             ],
             [
                 'name' => 'Laptops',
                 'slug' => Str::slug('Laptops'),
                 'image' => null,
-                'parent_id' => 1, // Parent category ID for Electronics
+                'parent_id' => 3, // Parent category ID for Electronics
             ],
             [
                 'name' => 'Fashion',
                 'slug' => Str::slug('Fashion'),
                 'image' => null,
-                'parent_id' => null,
+                'parent_id' => 4,
             ],
             [
+
                 'name' => 'Men',
                 'slug' => Str::slug('Men'),
                 'image' => null,
-                'parent_id' => 4, // Parent category ID for Fashion
+                'parent_id' => 5, // Parent category ID for Fashion
             ],
             [
                 'name' => 'Women',
                 'slug' => Str::slug('Women'),
                 'image' => null,
-                'parent_id' => 4, // Parent category ID for Fashion
+                'parent_id' => 6, // Parent category ID for Fashion
             ],
         ];
 
