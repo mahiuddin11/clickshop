@@ -1,66 +1,123 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Visiting Card</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #1e1e2f; /* Dark background */
+        color: #ffffff;
+        background-image: url("https://www.transparenttextures.com/patterns/hexellence.png"); /* Coding-related hexagonal background */
+      }
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+      .custom-design {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-## About Laravel
+      .card-container {
+        position: relative;
+        background: linear-gradient(145deg, #f5f5f5, #e4e4e4); /* Soft gradient background */
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        max-width: 600px;
+        width: 90%; /* Responsive width */
+        border: 5px solid #00bfff; /* Frame effect */
+        margin: auto;
+      }
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+      .circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: #00bfff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+      }
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+      .inner-circle img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ffffff;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      }
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+      .logo-section {
+        text-align: center;
+        margin-left: 20px;
+      }
 
-## Learning Laravel
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 40px solid #00bfff;
+        margin-bottom: 10px;
+      }
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+      .logo-text {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+      .tagline {
+        font-size: 14px;
+        color: #555;
+      }
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+      @media (max-width: 768px) {
+        .card-container {
+          flex-direction: column;
+          text-align: center;
+        }
 
-## Laravel Sponsors
+        .circle {
+          margin: 0 auto 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="custom-design">
+        <div class="card-container">
+          <div class="circle">
+            <div class="inner-circle">
+              <img
+                src="https://avatars.githubusercontent.com/u/176903235?v=4"
+                alt="Placeholder"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="logo-section">
+            <div class="triangle"></div>
+            <h2 class="logo-text">MahiUddin Samad</h2>
+            <p class="tagline">Jr. Software Developer</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
