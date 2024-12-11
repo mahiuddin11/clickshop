@@ -19,6 +19,7 @@ class ProductController extends Controller
 
         $products = Product::orderBy('created_at', 'DESC')->paginate(10);
 
+
         return view('Admin.products.product_list', compact('products'));
     }
 
@@ -33,15 +34,17 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+
         $product = new Product();
 
+
+
         $product->name = $request->name;
-        $product->slug = $request->slug;
+        $product->slug = Str::slug($request->name);
         $product->category_id = $request->category_id;
         $product->brand_id = $request->brand_id;
-        $product->short_description = $request->short_description;
-        $product->description = $request->description;
+        $product->short_description = $request->short_description ?? "";
+        $product->description  = $request->description ?? "" ;
         $product->regular_price = $request->regular_price;
         $product->sale_price = $request->sale_price;
         $product->SKU = $request->SKU;
@@ -53,7 +56,7 @@ class ProductController extends Controller
 
         // Handle main image
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
+            $image = $request->file('image') ?? "";
             $imageName = $current_timestamp . '.' . $image->extension();
             $this->GenereateProductThubmailImage($image, $imageName);
             $product->image = $imageName;

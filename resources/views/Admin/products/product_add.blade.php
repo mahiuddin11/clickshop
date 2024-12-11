@@ -61,7 +61,8 @@
                         <div class="select">
                             <select class="" name="category_id">
                                 <option>Choose category</option>
-                                @foreach ($catagories as $catagory )
+                                @foreach ( $catagories as $catagory )
+
                                     <option value="{{$catagory->id}}">{{$catagory->name}}</option>
                                 @endforeach
                             </select>
@@ -95,7 +96,7 @@
                 <fieldset class="description">
                     <div class="body-title mb-10">Description <span class="tf-color-1">*</span>
                     </div>
-                    <textarea class="mb-10" name="descaption" placeholder="Description"
+                    <textarea class="mb-10" name="description" placeholder="Description"
                         tabindex="0" aria-required="true" required=""></textarea>
                     <div class="text-tiny">Do not exceed 100 characters when entering the
                         product name.</div>

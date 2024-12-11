@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('brand_id');
-            $table->text('short_description');
-            $table->text('description');
+            $table->longText('short_description')->nullable();
+            $table->longText('description')->nullable();
             $table->decimal('regular_price', 8, 2);
             $table->decimal('sale_price', 8, 2)->nullable();
             $table->string('SKU')->unique();
