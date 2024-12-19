@@ -114,6 +114,6 @@ class ProductController extends Controller
         $img->fit(104, 104, function ($constraint) {
             $constraint->aspectRatio();
             $constraint->upsize();
-        })->save($destinationPath . '/thumb_' . $imageName);
+        })->save($destinationPath . '/' . $imageName);
     }
 }
