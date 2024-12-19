@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+<style>
+    
+    
+</style>
 @section('contant')
 <div class="main-content-inner">
     <div class="main-content-wrap">
@@ -41,6 +45,7 @@
                     <thead>
                         <tr>
                             <th>SL</th>
+                            
                             <th>Name</th>
                             <th>Price</th>
                             <th>SalePrice</th>
@@ -59,9 +64,10 @@
 
                         <tr>
                             <td>{{$product->id}}</td>
+                            
                             <td class="pname">
                                 <div class="image">
-                                    <img src="{{asset('uploads/products/')}}{{$product->image}}" alt="" class="image">
+                                    <img src="{{asset('uploads/products/thumbmails')}}/{{$product->image}}" alt="" class="image">
                                 </div>
                                 <div class="name">
                                     <a href="#" class="body-title-2">{{$product->name}}</a>
@@ -74,16 +80,16 @@
                             <td>{{$product->Catagory->name}}</td>
                             <td>{{$product->Brand->name}}</td>
                             <td>{{$product->featured == 0 ? 'NO':'Yes'}}</td>
-                            <td>{{$product->stok_status}}</td>
+                            <td>{{$product->stock_status}}</td>
                             <td>{{$product->quantity}}</td>
                             <td>
                                 <div class="list-icon-function">
-                                    <a href="#" target="_blank">
+                                    <a href="{{route('admin.product.view',['id'=>$product->id])}}" target="_blank">
                                         <div class="item eye">
                                             <i class="icon-eye"></i>
                                         </div>
                                     </a>
-                                    <a href="#">
+                                    <a href="{{route('admin.product.edit',['id'=>$product->id])}}">
                                         <div class="item edit">
                                             <i class="icon-edit-3"></i>
                                         </div>
