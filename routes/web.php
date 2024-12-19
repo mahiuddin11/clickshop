@@ -61,6 +61,10 @@ Route::middleware(['auth',AuthAdmin::class])->group(function()
     Route::get('/admin/product',[ProductController::class,'index'])->name('admin.productlist');
     Route::get('/admin/product/create',[ProductController::class, 'productCreate'])->name('admin.product.create');
     Route::post('/admin/product/store',[ProductController::class, 'store'])->name('admin.product.store');
+    Route::get('/admin/product/view/{id}',[ProductController::class,function(){
+        return 'Coming Soon ';
+    }])->name('admin.product.view');
+    Route::get('/admin/product/edit/{id}',[ProductController::class,'edit'])->name('admin.product.edit');
 
     //setting route link
     Route::get('/admin/setting',[AdminController::class, 'company_setting'])->name('admin.setting');

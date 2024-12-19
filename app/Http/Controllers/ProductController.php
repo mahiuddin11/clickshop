@@ -116,4 +116,13 @@ class ProductController extends Controller
             $constraint->upsize();
         })->save($destinationPath . '/thumb_' . $imageName);
     }
+
+    public function edit($id){
+
+        $product = Product::find($id);
+        $catagories = Catagory::get();
+        $brands = Brand::get();
+        // dd($catagories);
+        return view('Admin.products.product_edit', compact('catagories', 'brands' , 'product'));
+    }
 }
