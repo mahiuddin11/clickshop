@@ -19,7 +19,7 @@ class ProductController extends Controller
 
         $products = Product::orderBy('created_at', 'DESC')->paginate(10);
 
-
+        
         return view('Admin.products.product_list', compact('products'));
     }
 
