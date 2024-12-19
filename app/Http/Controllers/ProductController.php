@@ -37,8 +37,6 @@ class ProductController extends Controller
 
         $product = new Product();
 
-
-
         $product->name = $request->name;
         $product->slug = Str::slug($request->name);
         $product->category_id = $request->category_id;
