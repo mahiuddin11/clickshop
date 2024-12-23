@@ -11,7 +11,8 @@ use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use Laravel\Prompts\Prompt;
 use PhpParser\Node\Stmt\Return_;
-
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 class ProductController extends Controller
 {
 
@@ -151,6 +152,18 @@ class ProductController extends Controller
         $current_timestamp = Carbon::now()->timestamp;
           // Handle main image
           if ($request->hasFile('image')) {
+
+            if( File::exists(public_path('uploads/products').'/'. $product->image)){
+
+                File::delete(public_path('uploads/products').'/'. $product->image);
+            }
+
+            if( File::exists(public_path('uploads/products/thumbmails').'/'. $product->image)){
+
+                File::delete(public_path('uploads/products/thumbmails').'/'. $product->image);
+            }
+
+
             $image = $request->file('image') ?? "";
             $imageName = $current_timestamp . '.' . $image->extension();
             $this->GenereateProductThubmailImage($image, $imageName);
@@ -164,6 +177,25 @@ class ProductController extends Controller
         $counter = 1;
 
         if ($request->hasFile('images')) {
+
+
+
+
+            foreach(explode(',',$product->images) as $oldimage){
+
+                if( File::exists(public_path('uploads/products').'/'. $oldimage)){
+
+                    File::delete(public_path('uploads/products').'/'. $oldimage);
+                }
+
+                if( File::exists(public_path('uploads/products/thumbmails').'/'. $oldimage)){
+
+                    File::delete(public_path('uploads/products/thumbmails').'/'. $oldimage);
+                    // Log::info('Main image exists: ' . $oldimage);
+                }
+            }
+
+
             $allowedfile = ['jpg', 'png', 'jpeg'];
             $files = $request->file('images');
 
