@@ -35,7 +35,7 @@
 
             @csrf
             @method('PUT')
-           
+
                 <input type="hidden" name="id" value="{{$product->id}}">
             <div class="wg-box">
                 <fieldset class="name">
@@ -61,10 +61,10 @@
                         </div>
                         <div class="select">
                             <select class="" name="category_id">
-                                <option>{{$product->Catagory->name}}</option>
+
                                 @foreach ( $catagories as $catagory )
 
-                                    <option value="{{$catagory->id}}">{{$catagory->name}}</option>
+                                    <option value="{{$catagory->id}} {{$product->category_id == $catagory->id ? "selected":""}}">{{$catagory->name}}</option>
                                 @endforeach
 
                             </select>
@@ -75,10 +75,10 @@
                         </div>
                         <div class="select">
                             <select class="" name="brand_id">
-                                
-                                <option>{{$product->Brand->name}}</option>
+
+
                                 @foreach ($brands as $brand)
-                                <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                <option value="{{$brand->id}} {{$product->brand_id == $brand->id ? "selected":""}}">{{$brand->name}}</option>
                                 @endforeach
 
                             </select>
@@ -136,10 +136,10 @@
                         @foreach(explode(',', $product->images) as $image)
                             <div class="item">
                                 <img src="{{ asset('uploads/products/thumbmails') }}/{{trim($image)}}" alt="Gallery Image">
-                            </div>  
+                            </div>
                         @endforeach
-                    @endif 
-                    
+                    @endif
+
                         <div id="galUpload" class="item up-load">
                             <label class="uploadfile" for="gFile">
                                 <span class="icon">
@@ -192,11 +192,11 @@
                     <fieldset class="name">
                         <div class="body-title mb-10">Stock</div>
                         <div class="select mb-10">
-                            <option value="{{$product->stock_status}}">{{$product->stock_status}}</option>
+
                             <select class="" name="stock_status">
-                                <option value="{{$product->stock_status}}">{{$product->stock_status}}</option>
-                                <option value="instock">InStock</option>
-                                <option value="outofstock">Out of Stock</option>
+
+                                <option value="instock"{{$product->featured == "instock" ? "selected":""}}>InStock</option>
+                                <option value="outofstock" {{$product->featured == "outofstock" ? "selected":""}}>Out of Stock</option>
                             </select>
                         </div>
                     </fieldset>
@@ -204,9 +204,9 @@
                         <div class="body-title mb-10">Featured</div>
                         <div class="select mb-10">
                             <select class="" name="featured">
-                                <option value="{{$product->featured ? 'Yes' : "No"}}">{{$product->featured ? 'Yes' : "No"}}</option>
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
+                                {{-- <option value="{{$product->featured ? 'Yes' : "No"}}">{{$product->featured ? 'Yes' : "No"}}</option> --}}
+                                <option value="0" {{$product->featured == "0" ? "selected":""}}>No</option>
+                                <option value="1"{{$product->featured == "0" ? "selected":""}}>Yes</option>
                             </select>
                         </div>
                     </fieldset>

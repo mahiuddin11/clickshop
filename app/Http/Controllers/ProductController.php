@@ -26,7 +26,7 @@ class ProductController extends Controller
 
         $products = Product::orderBy('created_at', 'DESC')->paginate(10);
 
-        
+
         return view('Admin.products.product_list', compact('products'));
     }
 
@@ -131,10 +131,10 @@ class ProductController extends Controller
         return view('Admin.products.product_edit', compact('catagories', 'brands' , 'product'));
     }
 
-    public function update(Request $request , $id ){
+    public function update(Request $request ){
 
-       $product = Product::find($id);
-        
+       $product = Product::find($request->id);
+
        $product->name = $request->name;
         $product->slug = Str::slug($request->name);
         $product->category_id = $request->category_id;
@@ -188,7 +188,7 @@ class ProductController extends Controller
         $product->images = $gallery_images;
         $product->save();
 
-      
+
         return redirect()->route('admin.productlist')->with('status', 'Product has been Update sucessfull');
     }
 }
