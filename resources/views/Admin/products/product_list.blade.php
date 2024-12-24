@@ -94,8 +94,10 @@
                                             <i class="icon-edit-3"></i>
                                         </div>
                                     </a>
-                                    <form action="#" method="POST">
-                                        <div class="item text-danger delete">
+                                    <form action="{{ route('admin.product.delete', ['id' => $product->id]) }}" method="POST" id="delete-form-{{ $product->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="item text-danger delete" onclick="document.getElementById('delete-form-{{ $product->id }}').submit();">
                                             <i class="icon-trash-2"></i>
                                         </div>
                                     </form>

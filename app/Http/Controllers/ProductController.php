@@ -223,4 +223,28 @@ class ProductController extends Controller
 
         return redirect()->route('admin.productlist')->with('status', 'Product has been Update sucessfull');
     }
+
+    public function product_delete($id) {
+        
+        $product = Product::find($id);
+
+        foreach(explode(',',$product->images) as $oldimage){
+
+            if( File::exists(public_path('uploads/products').'/'. $oldimage)){
+
+                File::delete(public_path('uploads/products').'/'. $oldimage);
+            }
+
+            if( File::exists(public_path('uploads/products/thumbmails').'/'. $oldimage)){
+
+                File::delete(public_path('uploads/products/thumbmails').'/'. $oldimage);
+               
+            }
+        }
+
+        $product->delete();
+
+        return redirect()->route('admin.productlist')->with('status', 'Product has been Delete sucessfull');
+
+    }
 }

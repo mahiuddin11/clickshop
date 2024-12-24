@@ -67,6 +67,8 @@ Route::middleware(['auth',AuthAdmin::class])->group(function()
     
     Route::get('/admin/product/edit/{id}',[ProductController::class,'edit'])->name('admin.product.edit');
     Route::put('/admin/product/update/{id}',[ProductController::class,'update'])->name('admin.product.update');
+    Route::delete('/admin/product/delete/{id}',[ProductController::class,'product_delete'])->name('admin.product.delete');
+    
 
     //setting route link
     Route::get('/admin/setting',[AdminController::class, 'company_setting'])->name('admin.setting');
