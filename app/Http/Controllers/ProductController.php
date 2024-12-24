@@ -179,8 +179,6 @@ class ProductController extends Controller
         if ($request->hasFile('images')) {
 
 
-
-
             foreach(explode(',',$product->images) as $oldimage){
 
                 if( File::exists(public_path('uploads/products').'/'. $oldimage)){
@@ -210,14 +208,17 @@ class ProductController extends Controller
                     $this->GenereateProductThubmailImage($file, $gfileName);
 
                     array_push($gallery_array, $gfileName);
-                    $counter++;
+                    $counter = $counter + 1;
                 }
+
+                $gallery_images = implode(',', $gallery_array);
+                $product->images = $gallery_images;
             }
 
-            $gallery_images = implode(',', $gallery_array);
+           
         }
 
-        $product->images = $gallery_images;
+       
         $product->save();
 
 
