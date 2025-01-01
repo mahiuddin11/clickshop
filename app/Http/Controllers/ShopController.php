@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class ShopController extends Controller
 {
     public function index(){
-        $product = Product::orderBy('created_at','desc');
-        return view('website.shop',get_defined_vars());
+
+         $products = Product::orderBy('created_at', 'desc')->paginate(10);
+        //  dd($products);
+        return view('website.shop',compact('products'));
     }
 }
