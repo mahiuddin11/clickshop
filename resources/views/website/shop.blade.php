@@ -358,9 +358,11 @@
 
                 <div class="d-flex justify-content-between mb-4 pb-md-2">
                     <div class="breadcrumb mb-0 d-none d-md-block flex-grow-1">
-                        <a href="#" class="menu-link menu-link_us-s text-uppercase fw-medium">Home</a>
+                        <a href="{{ route('home.index') }}"
+                            class="menu-link menu-link_us-s text-uppercase fw-medium">Home</a>
                         <span class="breadcrumb-separator menu-link fw-medium ps-1 pe-1">/</span>
-                        <a href="#" class="menu-link menu-link_us-s text-uppercase fw-medium">The Shop</a>
+                        <a href="{{ route('shop.index') }}" class="menu-link menu-link_us-s text-uppercase fw-medium">The
+                            Shop</a>
                     </div>
 
                     <div
@@ -415,19 +417,16 @@
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide">
                                                 <a href="#"><img loading="lazy"
-                                                        src="{{asset('uploads/products/thumbmails')}}/{{$product->image}}" width="330"
-                                                height="400" alt="{{$product->name}}"
+                                                        src="{{ asset('uploads/products/thumbmails') }}/{{ $product->image }}"
+                                                        width="330" height="400" alt="{{ $product->name }}"
                                                         class="pc__img"></a>
                                             </div>
                                             <div class="swiper-slide">
-                                                @foreach(explode(",", $product->images) as $img)
+                                                @foreach (explode(',', $product->images) as $img)
                                                     <a href="details.html">
-                                                        <img
-                                                            loading="lazy"
+                                                        <img loading="lazy"
                                                             src="{{ asset('uploads/products/thumbmails/' . $img) }}"
-                                                            width="330"
-                                                            height="400"
-                                                            alt="{{$product->name}}"
+                                                            width="330" height="400" alt="{{ $product->name }}"
                                                             class="pc__img">
                                                     </a>
                                                 @endforeach
@@ -456,7 +455,8 @@
                                     <div class="product-card__price d-flex">
                                         <span class="money price">
                                             @if ($product->sale_price)
-                                                <s>${{ number_format($product->regular_price, 0) }}</s> <span class="px-3">${{ number_format($product->sale_price, 0) }}</span>
+                                                <s>${{ number_format($product->regular_price, 0) }}</s> <span
+                                                    class="px-3">${{ number_format($product->sale_price, 0) }}</span>
                                             @else
                                                 ${{ number_format($product->regular_price, 0) }}
                                             @endif
@@ -505,7 +505,13 @@
 
                 </div>
 
-                <nav class="shop-pages d-flex justify-content-between mt-3" aria-label="Page navigation">
+
+                <div class="divider"></div>
+                <div class=" flex items-center justify-between gap10 flex-wrap wg-pagination">
+                    {{ $products->links('pagination::bootstrap-5') }}
+                </div>
+
+                {{-- <nav class="shop-pages d-flex justify-content-between mt-3" aria-label="Page navigation">
                     <a href="#" class="btn-link d-inline-flex align-items-center">
                         <svg class="me-1" width="7" height="11" viewBox="0 0 7 11"
                             xmlns="http://www.w3.org/2000/svg">
@@ -525,7 +531,7 @@
                             <use href="#icon_next_sm" />
                         </svg>
                     </a>
-                </nav>
+                </nav> --}}
             </div>
         </section>
     </main>
