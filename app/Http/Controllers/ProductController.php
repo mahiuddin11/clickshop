@@ -27,8 +27,7 @@ class ProductController extends Controller
 
         $products = Product::orderBy('created_at', 'DESC')->paginate(10);
 
-
-        return view('Admin.products.product_list', compact('products'));
+        return view('Admin.products.product_list', get_defined_vars());
     }
 
     public function productCreate()
@@ -179,8 +178,6 @@ class ProductController extends Controller
         if ($request->hasFile('images')) {
 
 
-
-
             foreach(explode(',',$product->images) as $oldimage){
 
                 if( File::exists(public_path('uploads/products').'/'. $oldimage)){
@@ -210,17 +207,44 @@ class ProductController extends Controller
                     $this->GenereateProductThubmailImage($file, $gfileName);
 
                     array_push($gallery_array, $gfileName);
-                    $counter++;
+                    $counter = $counter + 1;
                 }
+
+                $gallery_images = implode(',', $gallery_array);
+                $product->images = $gallery_images;
             }
 
-            $gallery_images = implode(',', $gallery_array);
+           
         }
 
-        $product->images = $gallery_images;
+       
         $product->save();
 
 
         return redirect()->route('admin.productlist')->with('status', 'Product has been Update sucessfull');
+    }
+
+    public function product_delete($id) {
+        
+        $product = Product::find($id);
+
+        foreach(explode(',',$product->images) as $oldimage){
+
+            if( File::exists(public_path('uploads/products').'/'. $oldimage)){
+
+                File::delete(public_path('uploads/products').'/'. $oldimage);
+            }
+
+            if( File::exists(public_path('uploads/products/thumbmails').'/'. $oldimage)){
+
+                File::delete(public_path('uploads/products/thumbmails').'/'. $oldimage);
+               
+            }
+        }
+
+        $product->delete();
+
+        return redirect()->route('admin.productlist')->with('status', 'Product has been Delete sucessfull');
+
     }
 }
