@@ -54,7 +54,7 @@ class ProductController extends Controller
         $product->description  = $request->description ?? "";
         $product->regular_price = $request->regular_price;
         $product->sale_price = $request->sale_price;
-        $product->SKU = $request->SKU;
+        $product->SKU = $request->SKU ?? 'SKU-' . strtoupper(Str::random(8));
         $product->quantity = $request->quantity;
         $product->stock_status = $request->stock_status;
         $product->featured = $request->featured;
@@ -226,5 +226,34 @@ class ProductController extends Controller
 
 
         return redirect()->route('admin.productlist')->with('status', 'Product has been Update sucessfull');
+
     }
+
+
+    public function product_delete($id) {
+
+        $product = Product::find($id);
+
+        foreach(explode(',',$product->images) as $oldimage){
+
+            if( File::exists(public_path('uploads/products').'/'. $oldimage)){
+
+                File::delete(public_path('uploads/products').'/'. $oldimage);
+            }
+
+            if( File::exists(public_path('uploads/products/thumbmails').'/'. $oldimage)){
+
+                File::delete(public_path('uploads/products/thumbmails').'/'. $oldimage);
+
+            }
+        }
+
+        $product->delete();
+
+        return redirect()->route('admin.productlist')->with('status', 'Product has been Delete sucessfull');
+
+
+    }
+
+
 }
