@@ -157,7 +157,7 @@
                                 class="tf-color-1">*</span></div>
                         <input class="mb-10" type="text" placeholder="Enter sale price"
                             name="sale_price" tabindex="0" value="" aria-required="true"
-                            required="">
+                            >
                     </fieldset>
                 </div>
 
@@ -167,7 +167,7 @@
                         <div class="body-title mb-10">SKU <span class="tf-color-1">*</span>
                         </div>
                         <input class="mb-10" type="text" placeholder="Enter SKU" name="SKU"
-                            tabindex="0" value="" aria-required="true" required="">
+                            tabindex="0" value="" aria-required="true" >
                     </fieldset>
                     <fieldset class="name">
                         <div class="body-title mb-10">Quantity <span class="tf-color-1">*</span>

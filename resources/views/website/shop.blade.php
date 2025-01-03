@@ -403,7 +403,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="products-grid row row-cols-2 row-cols-md-3" id="products-grid">
 
                     @foreach ($products as $product)
@@ -420,14 +420,14 @@
                                                         class="pc__img"></a>
                                             </div>
                                             <div class="swiper-slide">
-                                                @foreach(explode(",", $product->image) as $img)
+                                                @foreach(explode(",", $product->images) as $img)
                                                     <a href="details.html">
-                                                        <img 
+                                                        <img
                                                             loading="lazy"
-                                                            src="{{ asset('uploads/products/thumbmails/' . $img) }}" 
+                                                            src="{{ asset('uploads/products/thumbmails/' . $img) }}"
                                                             width="330"
                                                             height="400"
-                                                            alt="Cropped Faux leather Jacket"
+                                                            alt="{{$product->name}}"
                                                             class="pc__img">
                                                     </a>
                                                 @endforeach
@@ -450,13 +450,13 @@
 
 
                                 <div class="pc__info position-relative">
-                                    <p class="pc__category">{{ $product->Catagory->name ?? 'No Category' }}</p>
+                                    <p class="pc__category">{{ $product->Catagory->name ?? 'NO Category' }}</p>
                                     <h6 class="pc__title"><a href="details.html">{{ $product->short_description }}</a>
                                     </h6>
                                     <div class="product-card__price d-flex">
                                         <span class="money price">
                                             @if ($product->sale_price)
-                                                <s>${{ number_format($product->sale_price, 0) }}</s> <span class="px-3">${{ number_format($product->regular_price, 0) }}</span>
+                                                <s>${{ number_format($product->regular_price, 0) }}</s> <span class="px-3">${{ number_format($product->sale_price, 0) }}</span>
                                             @else
                                                 ${{ number_format($product->regular_price, 0) }}
                                             @endif

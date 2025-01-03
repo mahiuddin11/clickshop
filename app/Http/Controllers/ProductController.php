@@ -148,8 +148,8 @@ class ProductController extends Controller
         $product->short_description = $request->short_description ?? "";
         $product->description  = $request->description ?? "";
         $product->regular_price = $request->regular_price;
-        $product->sale_price = $request->sale_price;
-        $product->SKU = $request->SKU;
+        $product->sale_price = $request->sale_price ?? '';
+        $product->SKU = $request->SKU ?? '';
         $product->quantity = $request->quantity;
         $product->stock_status = $request->stock_status;
         $product->featured = $request->featured;
