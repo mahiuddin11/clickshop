@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/', [HomeController::class,'index'])->name('home.index');
 Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
+Route::get('/shop/{product_slug}',[ShopController::class,"product_details"])->name('shop.product.details');
 
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
 Route::get('/about',[AboutController::class,'index'])->name('about.index');
@@ -64,11 +65,13 @@ Route::middleware(['auth',AuthAdmin::class])->group(function()
     Route::get('/admin/product/view/{id}',[ProductController::class,function(){
         return 'Coming Soon ';
     }])->name('admin.product.view');
-    
+
     Route::get('/admin/product/edit/{id}',[ProductController::class,'edit'])->name('admin.product.edit');
     Route::put('/admin/product/update/{id}',[ProductController::class,'update'])->name('admin.product.update');
     Route::delete('/admin/product/delete/{id}',[ProductController::class,'product_delete'])->name('admin.product.delete');
-    
+
+
+
 
     //setting route link
     Route::get('/admin/setting',[AdminController::class, 'company_setting'])->name('admin.setting');

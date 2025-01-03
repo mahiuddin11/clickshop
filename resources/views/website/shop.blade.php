@@ -151,7 +151,7 @@
                             <button class="accordion-button p-0 border-0 fs-5 text-uppercase" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#accordion-filter-brand" aria-expanded="true"
                                 aria-controls="accordion-filter-brand">
-                                Brands
+
                                 <svg class="accordion-button__icon type2" viewBox="0 0 10 6"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g aria-hidden="true" stroke="none" fill-rule="evenodd">
@@ -173,11 +173,13 @@
                                     <option value="5">Givenchy</option>
                                     <option value="5">Zara</option>
                                 </select>
+
                                 <div class="search-field__input-wrapper mb-3">
                                     <input type="text" name="search_text"
                                         class="search-field__input form-control form-control-sm border-light border-2"
                                         placeholder="Search" />
                                 </div>
+
                                 <ul class="multi-select__list list-unstyled">
                                     <li
                                         class="search-suggestion__item multi-select__item text-primary js-search-select js-multi-select">
@@ -416,14 +418,14 @@
                                         data-settings='{"resizeObserver": true}'>
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide">
-                                                <a href="#"><img loading="lazy"
+                                                <a href="{{ route('shop.product.details', ['product_slug' => $product->slug]) }}"><img loading="lazy"
                                                         src="{{ asset('uploads/products/thumbmails') }}/{{ $product->image }}"
                                                         width="330" height="400" alt="{{ $product->name }}"
                                                         class="pc__img"></a>
                                             </div>
                                             <div class="swiper-slide">
                                                 @foreach (explode(',', $product->images) as $img)
-                                                    <a href="details.html">
+                                                    <a href="{{ route('shop.product.details', ['product_slug' => $product->slug]) }}">
                                                         <img loading="lazy"
                                                             src="{{ asset('uploads/products/thumbmails/' . $img) }}"
                                                             width="330" height="400" alt="{{ $product->name }}"
@@ -450,11 +452,13 @@
 
                                 <div class="pc__info position-relative">
                                     <p class="pc__category">{{ $product->Catagory->name ?? 'NO Category' }}</p>
-                                    <h6 class="pc__title"><a href="details.html">{{ $product->short_description }}</a>
+                                    <h6 class="pc__title"><a href="{{ route('shop.product.details', ['product_slug' => $product->slug]) }}">{{ $product->short_description }}</a>
                                     </h6>
                                     <div class="product-card__price d-flex">
                                         <span class="money price">
-                                            @if ($product->sale_price)
+
+                                            @if ($product->sale_price > 0.00)
+
                                                 <s>${{ number_format($product->regular_price, 0) }}</s> <span
                                                     class="px-3">${{ number_format($product->sale_price, 0) }}</span>
                                             @else

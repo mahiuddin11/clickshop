@@ -13,4 +13,13 @@ class ShopController extends Controller
         //  dd($products);
         return view('website.shop',compact('products'));
     }
+
+    public function product_details($product_slug){
+
+        $product = Product:: where('slug', $product_slug)->first();
+
+        return view('product_details', compact('product'));
+    }
+
+
 }
