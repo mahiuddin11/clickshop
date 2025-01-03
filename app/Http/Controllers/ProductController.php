@@ -191,7 +191,7 @@ class ProductController extends Controller
                 if( File::exists(public_path('uploads/products/thumbmails').'/'. $oldimage)){
 
                     File::delete(public_path('uploads/products/thumbmails').'/'. $oldimage);
-                    // Log::info('Main image exists: ' . $oldimage);
+
                 }
             }
 
