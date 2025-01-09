@@ -11,9 +11,11 @@
                             <div class="swiper-container">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide product-single__image-item">
-                                        <img loading="lazy" class="h-auto" src="{{ asset('uploads/products/thumbmails') }}/{{ $product->image }}"
+                                        <img loading="lazy" class="h-auto"
+                                            src="{{ asset('uploads/products/thumbmails') }}/{{ $product->image }}"
                                             width="674" height="674" alt="" />
-                                        <a data-fancybox="gallery" href="{{ asset('uploads/products/thumbmails') }}/{{ $product->image }}"
+                                        <a data-fancybox="gallery"
+                                            href="{{ asset('uploads/products/thumbmails') }}/{{ $product->image }}"
                                             data-bs-toggle="tooltip" data-bs-placement="left" title="Zoom">
                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -21,39 +23,23 @@
                                             </svg>
                                         </a>
                                     </div>
-                                    <div class="swiper-slide product-single__image-item">
-                                        <img loading="lazy" class="h-auto" src="assets/images/products/product_0-1.jpg"
-                                            width="674" height="674" alt="" />
-                                        <a data-fancybox="gallery" href="../images/products/product_0-1.html"
-                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Zoom">
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <use href="#icon_zoom" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <div class="swiper-slide product-single__image-item">
-                                        <img loading="lazy" class="h-auto" src="assets/images/products/product_0-2.jpg"
-                                            width="674" height="674" alt="" />
-                                        <a data-fancybox="gallery" href="../images/products/product_0-2.html"
-                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Zoom">
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <use href="#icon_zoom" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <div class="swiper-slide product-single__image-item">
-                                        <img loading="lazy" class="h-auto" src="assets/images/products/product_0-3.jpg"
-                                            width="674" height="674" alt="" />
-                                        <a data-fancybox="gallery" href="../images/products/product_0-3.html"
-                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Zoom">
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <use href="#icon_zoom" />
-                                            </svg>
-                                        </a>
-                                    </div>
+
+                                    @foreach (explode(',', $product->images) as $gimage)
+                                        <div class="swiper-slide product-single__image-item">
+                                            <img loading="lazy" class="h-auto"
+                                                src="{{ asset('uploads/products/thumbmails') }}/{{ $gimage }}"
+                                                width="674" height="674" alt="" />
+                                            <a data-fancybox="gallery"
+                                                href="{{ asset('uploads/products/thumbmails') }}/{{ $gimage }}"
+                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Zoom">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <use href="#icon_zoom" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    @endforeach
+
                                 </div>
                                 <div class="swiper-button-prev"><svg width="7" height="11" viewBox="0 0 7 11"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -69,17 +55,16 @@
                             <div class="swiper-container">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide product-single__image-item"><img loading="lazy" class="h-auto"
-                                            src="assets/images/products/product_0.jpg" width="104" height="104"
-                                            alt="" /></div>
-                                    <div class="swiper-slide product-single__image-item"><img loading="lazy"
-                                            class="h-auto" src="assets/images/products/product_0-1.jpg" width="104"
-                                            height="104" alt="" /></div>
-                                    <div class="swiper-slide product-single__image-item"><img loading="lazy"
-                                            class="h-auto" src="assets/images/products/product_0-2.jpg" width="104"
-                                            height="104" alt="" /></div>
-                                    <div class="swiper-slide product-single__image-item"><img loading="lazy"
-                                            class="h-auto" src="assets/images/products/product_0-3.jpg" width="104"
-                                            height="104" alt="" /></div>
+                                            src="{{ asset('uploads/products/thumbmails') }}/{{ $product->image }}"
+                                            width="104" height="104" alt="" /></div>
+
+                                    @foreach (explode(',', $product->images) as $gimg)
+                                        <div class="swiper-slide product-single__image-item"><img loading="lazy"
+                                                class="h-auto"
+                                                src="{{ asset('uploads/products/thumbmails') }}/{{ $gimg }}"
+                                                width="104" height="104" alt="" /></div>
+                                    @endforeach
+
                                 </div>
                             </div>
                         </div>
@@ -139,7 +124,7 @@
                         </span>
                     </div>
                     <div class="product-single__short-desc">
-                        <p>{{$product->short_description}}</p>
+                        <p>{{ $product->short_description }}</p>
                     </div>
                     <form name="addtocart-form" method="post">
                         <div class="product-single__addtocart">
@@ -197,15 +182,15 @@
                     <div class="product-single__meta-info">
                         <div class="meta-item">
                             <label>SKU:</label>
-                            <span>{{$product->SKU}}</span>
+                            <span>{{ $product->SKU }}</span>
                         </div>
                         <div class="meta-item">
                             <label>Categories:</label>
-                            <span>{{$product->catagory->name}}</span>
+                            <span>{{ $product->catagory->name }}</span>
                         </div>
                         <div class="meta-item">
                             <label>Tags:</label>
-                            <span>{{"N/A"}}</span>
+                            <span>{{ 'N/A' }}</span>
                         </div>
                     </div>
                 </div>
@@ -232,8 +217,9 @@
                     <div class="tab-pane fade show active" id="tab-description" role="tabpanel"
                         aria-labelledby="tab-description-tab">
                         <div class="product-single__description">
-                            <h3 class="block-title mb-4">{{$product->name}}</h3>
-                            <p class="content">{{$product->name}}</p>
+                            <h3 class="block-title mb-4">{{ $product->short_description }}</h3>
+
+                            <p class="content">{{ $product->description }}</p>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <h3 class="block-title">Why choose product?</h3>
@@ -463,275 +449,55 @@
             }
           }'>
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide product-card">
-                            <div class="pc__img-wrapper">
-                                <a href="details.html">
-                                    <img loading="lazy" src="assets/images/products/product_3.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img">
-                                    <img loading="lazy" src="assets/images/products/product_3-1.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img pc__img-second">
-                                </a>
-                                <button
-                                    class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
-                                    data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
-                            </div>
-
-                            <div class="pc__info position-relative">
-                                <p class="pc__category">Dresses</p>
-                                <h6 class="pc__title"><a href="details.html">Kirby T-Shirt</a></h6>
-                                <div class="product-card__price d-flex">
-                                    <span class="money price">$17</span>
+                        @foreach ($reletedProduct as $item)
+                            <div class="swiper-slide product-card">
+                                <div class="pc__img-wrapper">
+                                    
+                                    <a href="{{ route('shop.product.details', ['product_slug' => $item->slug]) }}">
+                                        <img loading="lazy"
+                                            src="{{ asset('uploads/products/thumbmails/' . $item->image) }}"
+                                            width="330" height="400" alt="{{ $item->name }}" class="pc__img">
+                                        <!-- Optional: Replace with second image if available -->
+                                        <img loading="lazy"
+                                            src="{{ asset('uploads/products/thumbmails/' . $item->image) }}"
+                                            width="330" height="400" alt="{{ $item->name }}"
+                                            class="pc__img pc__img-second">
+                                    </a>
+                                    <button
+                                        class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
+                                        data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
                                 </div>
 
-                                <button
-                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                                    title="Add To Wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_heart" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide product-card">
-                            <div class="pc__img-wrapper">
-                                <a href="details.html">
-                                    <img loading="lazy" src="assets/images/products/product_1.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img">
-                                    <img loading="lazy" src="assets/images/products/product_1-1.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img pc__img-second">
-                                </a>
-                                <button
-                                    class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
-                                    data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
-                            </div>
-
-                            <div class="pc__info position-relative">
-                                <p class="pc__category">Dresses</p>
-                                <h6 class="pc__title"><a href="details.html">Cropped Faux Leather Jacket</a></h6>
-                                <div class="product-card__price d-flex">
-                                    <span class="money price">$29</span>
-                                </div>
-                                <div class="product-card__review d-flex align-items-center">
-                                    <div class="reviews-group d-flex">
-                                        <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                                            <use href="#icon_star" />
-                                        </svg>
-                                        <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                                            <use href="#icon_star" />
-                                        </svg>
-                                        <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                                            <use href="#icon_star" />
-                                        </svg>
-                                        <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                                            <use href="#icon_star" />
-                                        </svg>
-                                        <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                                            <use href="#icon_star" />
-                                        </svg>
+                                <div class="pc__info position-relative">
+                                    <p class="pc__category">{{ $item->category->name ?? 'Category' }}</p>
+                                    <h6 class="pc__title"><a
+                                            href="{{ url('product/' . $item->slug) }}">{{ $item->name }}</a></h6>
+                                    <div class="product-card__price d-flex">
+                                        <span class="money price">
+                                            @if ($item->sale_price > 0)
+                                                <s>${{ number_format($item->regular_price, 0) }}</s>
+                                                ${{ number_format($item->sale_price, 0) }}
+                                            @elseif($item->sale_price == 0)
+                                            
+                                                ${{ number_format($item->regular_price, 0) }}
+                                            @endif
+                                        </span>
                                     </div>
-                                    <span class="reviews-note text-lowercase text-secondary ms-1">8k+ reviews</span>
+
+                                    <button
+                                        class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
+                                        title="Add To Wishlist">
+                                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <use href="#icon_heart" />
+                                        </svg>
+                                    </button>
                                 </div>
-
-                                <button
-                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                                    title="Add To Wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_heart" />
-                                    </svg>
-                                </button>
                             </div>
-                        </div>
+                        @endforeach
 
-                        <div class="swiper-slide product-card">
-                            <div class="pc__img-wrapper">
-                                <a href="details.html">
-                                    <img loading="lazy" src="assets/images/products/product_2.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img">
-                                    <img loading="lazy" src="assets/images/products/product_2-1.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img pc__img-second">
-                                </a>
-                                <button
-                                    class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
-                                    data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
-                            </div>
 
-                            <div class="pc__info position-relative">
-                                <p class="pc__category">Dresses</p>
-                                <h6 class="pc__title"><a href="details.html">Calvin Shorts</a></h6>
-                                <div class="product-card__price d-flex">
-                                    <span class="money price">$62</span>
-                                </div>
 
-                                <button
-                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                                    title="Add To Wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_heart" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide product-card">
-                            <div class="pc__img-wrapper">
-                                <a href="details.html">
-                                    <img loading="lazy" src="assets/images/products/product_6.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img">
-                                    <img loading="lazy" src="assets/images/products/product_6-1.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img pc__img-second">
-                                </a>
-                                <button
-                                    class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
-                                    data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
-                            </div>
-
-                            <div class="pc__info position-relative">
-                                <p class="pc__category">Dresses</p>
-                                <h6 class="pc__title"><a href="details.html">Shirt In Botanical Cheetah Print</a></h6>
-                                <div class="product-card__price d-flex">
-                                    <span class="money price">$62</span>
-                                </div>
-
-                                <button
-                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                                    title="Add To Wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_heart" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide product-card">
-                            <div class="pc__img-wrapper">
-                                <a href="details.html">
-                                    <img loading="lazy" src="assets/images/products/product_7.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img">
-                                    <img loading="lazy" src="assets/images/products/product_7-1.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img pc__img-second">
-                                </a>
-                                <button
-                                    class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
-                                    data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
-                            </div>
-
-                            <div class="pc__info position-relative">
-                                <p class="pc__category">Dresses</p>
-                                <h6 class="pc__title"><a href="details.html">Cotton Jersey T-Shirt</a></h6>
-                                <div class="product-card__price d-flex">
-                                    <span class="money price">$17</span>
-                                </div>
-
-                                <button
-                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                                    title="Add To Wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_heart" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide product-card">
-                            <div class="pc__img-wrapper">
-                                <a href="details.html">
-                                    <img loading="lazy" src="assets/images/products/product_4.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img">
-                                    <img loading="lazy" src="assets/images/products/product_4-1.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img pc__img-second">
-                                </a>
-                                <button
-                                    class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
-                                    data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
-                            </div>
-
-                            <div class="pc__info position-relative">
-                                <p class="pc__category">Dresses</p>
-                                <h6 class="pc__title"><a href="details.html">Cableknit Shawl</a></h6>
-                                <div class="product-card__price d-flex">
-                                    <span class="money price price-old">$129</span>
-                                    <span class="money price price-sale">$99</span>
-                                </div>
-
-                                <button
-                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                                    title="Add To Wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_heart" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide product-card">
-                            <div class="pc__img-wrapper">
-                                <a href="details.html">
-                                    <img loading="lazy" src="assets/images/products/product_5.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img">
-                                    <img loading="lazy" src="assets/images/products/product_5-1.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img pc__img-second">
-                                </a>
-                                <button
-                                    class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
-                                    data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
-                            </div>
-
-                            <div class="pc__info position-relative">
-                                <p class="pc__category">Dresses</p>
-                                <h6 class="pc__title"><a href="details.html">Colorful Jacket</a></h6>
-                                <div class="product-card__price d-flex">
-                                    <span class="money price">$29</span>
-                                </div>
-
-                                <button
-                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                                    title="Add To Wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_heart" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide product-card">
-                            <div class="pc__img-wrapper">
-                                <a href="details.html">
-                                    <img loading="lazy" src="assets/images/products/product_8.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img">
-                                    <img loading="lazy" src="assets/images/products/product_8-1.jpg" width="330"
-                                        height="400" alt="Cropped Faux leather Jacket" class="pc__img pc__img-second">
-                                </a>
-                                <button
-                                    class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart js-open-aside"
-                                    data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
-                            </div>
-
-                            <div class="pc__info position-relative">
-                                <p class="pc__category">Dresses</p>
-                                <h6 class="pc__title"><a href="details.html">Zessi Dresses</a></h6>
-                                <div class="product-card__price d-flex">
-                                    <span class="money price price-old">$129</span>
-                                    <span class="money price price-sale">$99</span>
-                                </div>
-
-                                <button
-                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                                    title="Add To Wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_heart" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
                     </div><!-- /.swiper-wrapper -->
                 </div><!-- /.swiper-container js-swiper-slider -->
 
