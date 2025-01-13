@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Surfsidemedia\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
     //
 
     public function index(){
-
-        return view('website.cart');
+        $items = Cart::instance('cart')->content();
+        return view('website.cart', compact('items'));
     }
+    // public function index2(){
+
+    //     return view('website.cart');
+    // }
+   
 }

@@ -71,8 +71,6 @@ Route::middleware(['auth',AuthAdmin::class])->group(function()
     Route::delete('/admin/product/delete/{id}',[ProductController::class,'product_delete'])->name('admin.product.delete');
 
 
-
-
     //setting route link
     Route::get('/admin/setting',[AdminController::class, 'company_setting'])->name('admin.setting');
 });
