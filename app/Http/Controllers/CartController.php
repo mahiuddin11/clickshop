@@ -11,7 +11,7 @@ class CartController extends Controller
 
     public function index(){
         $items = Cart::instance('cart')->content();
-        return view('website.cart', compact('items'));
+        return view('website.cart', get_defined_vars());
     }
     // public function index2(){
 

@@ -238,7 +238,10 @@
                     </div>
                 @else
                 <div class="row">
-                    <h1>empty data<h1>
+                    <div class="col-md-12 text-center pt-5 bp-5">
+                        <p>No Item found in your card</p>
+                        <a href="{{route('shop.index')}}" class=" btn btn-info">Shop Now</a>
+                    </div>
                 </div>
                 @endif
             </div>
